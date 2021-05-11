@@ -1,0 +1,135 @@
+#VRML V2.0 utf8
+
+Inline {url	"PortaArmario.wrl"}
+Transform{translation 0 -1.925 -1 scale 0.31 0.5 0.4 children [Inline {url "Gaveta.wrl"}]}
+Transform{translation 0 -2.35 -1 scale 0.31 0.5 0.4 children [Inline {url "Gaveta.wrl"}]}
+Transform{translation 0 -2.775 -1 scale 0.31 0.5 0.4 children [Inline {url "Gaveta.wrl"}]}
+Transform{translation 0 -3.2 -1 scale 0.31 0.5 0.4 children [Inline {url "Gaveta.wrl"}]}
+
+#lateral esquerda
+Transform {
+	translation	-0.8 -1 -1
+	children [
+		DEF Lateral Shape {
+			appearance Appearance {
+				material Material {ambientIntensity 0}
+				texture	ImageTexture {
+					url	"textura_madeira_escura.jpg"
+				}
+			}
+			geometry Box {size .05 5 2}
+		}
+
+	]
+}
+
+Transform {
+	translation	0.8 -1 -1
+	children [
+		USE	Lateral
+
+		Transform {
+			translation	-.026 -0.3 0.5
+			rotation 0 1 0 -1.57
+			children [
+				Shape {
+					appearance Appearance {material Material {ambientIntensity 0
+					diffuseColor .52 .21 .04
+					specularColor .73 .86 .24
+					emissiveColor .35 .17 .04
+					shininess .11
+					transparency .824
+				}}
+					geometry Text {
+						fontStyle FontStyle	{justify "MIDDLE" size .25}
+						string "P3:4"
+					}
+				}
+			]
+		}
+	]
+}
+
+Transform {
+	translation	0 -1 -2
+	children [
+		Shape {
+			appearance Appearance {
+				material Material {ambientIntensity 0}
+				texture	ImageTexture {
+					url	"textura_madeira_escura.jpg"
+				}
+			}
+			geometry Box {size 1.6 5 0.05}
+		}
+	]
+}
+
+Transform {
+	translation	0 -1.525 -1
+	children [
+		DEF Hor Shape {
+			appearance Appearance {
+				material Material {ambientIntensity 0}
+				texture	ImageTexture {
+					url	"textura_madeira_escura.jpg"
+				}
+			}
+			geometry Box {size 1.57 0.05 2}
+		}
+
+	]
+}
+
+Transform {
+	translation	0 -1.95 -1
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 -2.375 -1
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 -2.8 -1
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 -3.225 -1
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 -3.275 -1
+	scale 1.1 1 1.1
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 -3.325 -1
+	scale 1.2 1 1.2
+	children [
+		USE	Hor
+	]
+}
+
+Transform {
+	translation	0 1.5 -1
+	scale 1.2 1 1.2
+	children [
+		USE	Hor
+	]
+}
+

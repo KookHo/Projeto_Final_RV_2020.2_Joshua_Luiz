@@ -1,0 +1,21 @@
+#VRML V2.0 utf8
+
+Shape {
+	appearance Appearance {
+		material Material {ambientIntensity	0}
+		texture	ImageTexture {
+			url	"cells.png"
+		}
+	}
+	geometry Box {size 2 3.1 0.05}
+}
+
+Shape {
+	appearance Appearance {
+		material Material {ambientIntensity	0}
+		texture	ImageTexture {
+			url	"Moldura4.jpg"
+		}
+	}
+	geometry Box {size 2.28 3.4 0.04}
+}

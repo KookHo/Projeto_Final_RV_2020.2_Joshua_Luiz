@@ -1,0 +1,100 @@
+#VRML V2.0 utf8
+
+#laterias
+Transform{
+	translation	-1.5 -0.5 0
+	children [
+		DEF Lateral Shape {
+			appearance Appearance {
+				material Material {ambientIntensity	0.8}
+				texture	ImageTexture {
+					url	"textura_madeira_escura.jpg"
+				}
+			}
+			geometry Box {size 0.1 4 1}
+		}
+	]
+}
+
+
+Transform{
+	translation	1.5 -0.5 0
+	children [
+		USE	Lateral
+	]
+}
+
+#prateleiras
+Transform{
+	children [
+		DEF Prateleira Shape {
+			appearance Appearance {
+				material Material {ambientIntensity	0.8}
+				texture	ImageTexture {
+					url	"textura_madeira_escura.jpg"
+				}
+			}
+			geometry Box {size 3 0.1 1}
+		}
+	]
+}
+
+Transform{
+	translation	0 1 0
+	children [
+		USE	Prateleira
+	]
+}
+
+Transform{
+	translation	0 -1 0
+	children [
+		USE	Prateleira
+	]
+}
+
+
+Transform{
+	translation	0 -2 0
+	children [
+		USE	Prateleira
+	]
+}
+
+
+
+#pes direitos
+Transform{
+	scale 1 0.1 0.1
+	translation	1.5 -2.5 0.45
+	children [
+		USE	Lateral
+	]
+}
+
+Transform{
+	scale 1 0.1 0.1
+	translation	1.5 -2.5 -0.45
+	children [
+		USE	Lateral
+	]
+}
+
+#pes esquerdos
+Transform{
+	scale 1 0.1 0.1
+	translation	-1.5 -2.5 0.45
+	children [
+		USE	Lateral
+	]
+}
+
+Transform{
+	scale 1 0.1 0.1
+	translation	-1.5 -2.5 -0.45
+	children [
+		USE	Lateral
+	]
+}
+
+

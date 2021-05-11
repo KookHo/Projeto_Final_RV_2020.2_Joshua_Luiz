@@ -1,0 +1,353 @@
+#VRML V2.0 utf8
+
+Transform {translation 0.8 0.6 0 scale 1 1 0.2 children [
+	DEF G_UP Shape {appearance Appearance {
+		material Material {
+			diffuseColor .88 .15 .01
+			specularColor .19 .03 .03
+			ambientIntensity .0833
+			shininess .08
+		}
+	}
+		geometry Cone {height .5 bottomRadius 0.25}}
+
+		DEF	Sensor_UP TouchSensor {}
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .5 .5 .5
+				transparency 1
+			}
+		}
+		geometry Cone {height .5 bottomRadius 0.25}}
+
+]}
+
+
+Transform {rotation 1 0 0 3.14 translation 0.8 -0.6 0 scale 1 1 0.2 children [
+	USE G_UP 
+
+		DEF	Sensor_DOWN TouchSensor {}
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .5 .5 .5
+				transparency 1
+			}
+		}
+		geometry Cone {height .5 bottomRadius 0.25}}
+
+]}
+
+Transform {rotation 0 0 -1 1.57 translation 1.4 0 0 scale 1 1 0.2 children [
+	USE G_UP 
+
+		DEF	Sensor_RIGHT TouchSensor {}
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .5 .5 .5
+				transparency 1
+			}
+		}
+		geometry Cone {height .5 bottomRadius 0.25}}
+]}
+
+Transform {rotation 0 0 1 1.57 translation 0.2 0 0 scale 1 1 0.2 children [
+	USE G_UP 
+
+		DEF	Sensor_LEFT TouchSensor {}
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .5 .5 .5
+				transparency 1
+			}
+		}
+		geometry Cone {height .5 bottomRadius 0.25}}
+		DEF Sensor_D TouchSensor {}
+]}
+
+
+Transform {translation 0.8 0 0 children [
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .11 .55 .09
+				specularColor .12 .06 .06
+				ambientIntensity .0633
+				shininess .09
+			}
+		}
+		geometry Box {size .4 .4 .15}}
+		DEF Sensor_T TouchSensor {}
+]}
+
+
+
+DEF Porta Transform {translation -2 0 0 center 1 0 0 rotation 0 0 0 1.57 children [
+	Shape {appearance Appearance {
+		material Material {
+			diffuseColor .31 .2 .16
+			specularColor .2 .1 .11
+			emissiveColor .09 .09 .09
+			ambientIntensity .0567
+			shininess .1
+		}
+	
+	
+	}
+
+	geometry Box {size 2 4 0.1}}
+
+	Transform  { translation -0.8 0 0.07 scale 0.1 0.1 0.1 rotation	0 0 0 0
+		children [DEF Macaneta Shape {geometry Sphere {radius 0.5}
+		appearance  Appearance {
+			material Material {
+				diffuseColor 0 0 0
+				specularColor .5 .5 .5
+				emissiveColor .15 .15 .15
+				ambientIntensity 0
+			}
+		}
+
+		}]
+	}
+
+	Transform  { translation  -0.8 0 -0.07 scale 0.1 0.1 0.1 children [USE	Macaneta]}
+]}
+
+
+
+#caixa de texto
+Transform {
+	translation	0.75 1.5 0
+	children[
+		Shape {
+			appearance Appearance {
+				material Material {
+					diffuseColor .11 .55 .09
+					specularColor .12 .06 .06
+					ambientIntensity .0633
+					shininess .09
+				}
+			}
+			geometry Box {size 3 0.5 0.1}
+		}
+	]
+}
+
+Transform {
+	translation	0.75 1.5 0.01
+	children[
+		Shape {
+			appearance Appearance {
+				material Material {
+					diffuseColor 0 0 0
+					specularColor .29 .3 .29
+					ambientIntensity 0
+					shininess .08
+				}
+			}
+			geometry Box {size 2.9 0.4 0.1}
+		}
+	]
+}
+
+
+#texto
+Transform {
+	translation	0.75 1.36 0.065
+	children[
+		Shape {
+			appearance Appearance {	}
+			geometry DEF Senha Text {
+				string "0000000"
+				fontStyle FontStyle {
+					justify "MIDDLE"
+					size 0.5
+				}
+			}
+		}
+	]
+}
+
+Transform {translation 2.5 0.5 0.1 scale 0.5 0.5 0.5 children [
+	Shape {appearance Appearance {		
+		
+	}
+	geometry DEF Visor Text {string["up: 1", "down: 2", "right: 3", "left: 4"]}}
+]}
+
+
+
+DEF	Motor Script {
+	
+	eventIn SFBool Up
+	eventIn	SFBool Down
+	eventIn SFBool Right
+	eventIn	SFBool Left
+
+	eventIn	SFFloat	OpenDoor
+
+	eventOut MFString Display
+	eventOut SFRotation Rotacao
+
+	field SFInt32 tentativa 0
+	field SFInt32 acertouSenha 0
+	field SFString Valor "0"
+	field SFString senha "234124"	#cima:1,baixo:2, dir: 3, esq: 4
+
+	url	"javascript:
+	function Up(b){
+
+		if(b==true){
+			if(tentativa===0){
+			    tentativa=1;
+				Valor='1';
+				Display[0] = Valor
+			}
+			else{
+				if(Valor.length < senha.length){
+					Valor=Valor+'1';
+					Display[0] = Valor
+				}
+			}
+			
+			if(Valor.length === senha.length){
+				if(Valor === senha){
+					//tentativa=0;
+					Valor='Senha Correta';
+					if(acertouSenha!== 2)
+						acertouSenha = 1;					
+				}
+				else{
+					//tentativa=0;
+					Valor='Senha Incorreta';
+				}
+			}
+					
+		}
+	}
+
+	function Down(b){
+	
+		if(b==true){
+			if(tentativa===0){
+			    tentativa=1;
+				Valor='2';
+				Display[0] = Valor
+			}
+			else{
+				if(Valor.length < senha.length){
+					Valor=Valor+'2';
+					Display[0] = Valor
+				}
+			}
+			if(Valor.length === senha.length){
+				if(Valor === senha){
+					//tentativa=0;
+					Valor='Senha Correta';
+					if(acertouSenha!==2)
+						acertouSenha=1;					
+				}
+				else{
+					//tentativa=0;
+					Valor='Senha Incorreta';
+				}
+			}
+		}
+	
+	}
+
+	function Right(b){
+	
+		if(b==true){
+			if(tentativa===0){
+			    tentativa=1;
+				Valor='3';
+				Display[0] = Valor
+			}
+			else{
+				if(Valor.length < senha.length){
+					Valor=Valor+'3';
+					Display[0] = Valor
+				}
+			}
+
+			if(Valor.length === senha.length){
+				if(Valor === senha){
+					tentativa=0;
+					//Valor='Senha Correta';
+					if(acertouSenha!==2)
+						acertouSenha=1;					
+				}
+				else{
+					//tentativa=0;
+					Valor='Senha Incorreta';
+				}
+			}
+		}
+	
+	}
+
+	function Left(b){
+	
+		if(b==true){	   
+			if(tentativa===0){
+			    tentativa=1;
+				Valor='4';
+				Display[0] = Valor
+			}
+			else{
+				if(Valor.length < senha.length){
+					Valor=Valor+'4';
+					Display[0] = Valor
+				}
+			}
+
+			if(Valor.length === senha.length){
+				if(Valor === senha){
+					Valor='Senha Correta';
+					if(acertouSenha!==2)
+						acertouSenha=1;					
+				}
+				else{
+					Valor='Senha Incorreta';
+				}
+			}
+		}
+	
+	}
+
+	function OpenDoor(t){
+		if(acertouSenha===1){
+			tempo = 5*t;
+			Display[0] = Valor
+			if(tempo===5)
+				acertouSenha=2;
+			Rotacao[0] = 0;
+			Rotacao[1] = 1;
+			Rotacao[2] = 0;
+			Rotacao[3] = -0.514*tempo;
+		}else{
+			tentativa = 0
+			Display[0] = Valor
+		}
+
+		
+	}
+
+	
+	"
+
+}
+
+DEF	Tempo TimeSensor {cycleInterval 2}
+
+
+ROUTE Sensor_UP.isActive TO	Motor.Up
+ROUTE Sensor_DOWN.isActive TO Motor.Down
+ROUTE Sensor_RIGHT.isActive TO Motor.Right
+ROUTE Sensor_LEFT.isActive TO Motor.Left
+
+ROUTE Sensor_T.touchTime TO Tempo.startTime
+ROUTE Tempo.fraction_changed TO Motor.OpenDoor
+
+ROUTE Motor.Display	TO Senha.string
+ROUTE Motor.Rotacao	TO Porta.rotation

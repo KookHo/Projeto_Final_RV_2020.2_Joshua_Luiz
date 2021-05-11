@@ -1,0 +1,144 @@
+#VRML V2.0 utf8
+
+Viewpoint { position 0 0 20 }
+
+#Base
+DEF	Livro Transform	{
+	translation	-1.15 1 -10#IS posicao
+	center 0 1 -10#IS centro
+	children[
+		#traseira pra puxar da estante
+		DEF Back Transform {
+			translation 0 1 -5
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {ambientIntensity	0.8}
+						texture	ImageTexture {
+							url	"texturaLivro1.jpg"#IS texturaM
+							repeatS	TRUE
+							repeatT	TRUE
+						}
+						textureTransform TextureTransform {
+							scale 1 1
+						}
+					}
+				
+					geometry Box {size 1 12 0.5}
+				}
+
+				DEF back_sensor TouchSensor {}
+
+			]
+		}
+
+		#frente pra por de volta
+		DEF Front Transform {
+			translation 0.4 1 -9
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {ambientIntensity	0.8}
+						texture	ImageTexture {
+							url	"texturaLivro1.jpg"#IS texturaF
+						}						
+					}
+				
+					geometry Box {size 0.2 11.75 7.75}
+				}
+
+				DEF put_back TouchSensor {}
+
+				DEF	interiorF Transform	{
+					translation	-0.2 0 0.25
+					children [
+						Shape {
+							appearance Appearance {material Material {ambientIntensity  0.8}}
+							geometry Box {size 0.4 11.75 7.75}
+						}
+					]
+				}
+			]
+		}
+
+		#traseira do livro
+		DEF Tras Transform {
+			translation -0.4 1 -9
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {ambientIntensity	0.8}
+						texture	ImageTexture {
+							url	"texturaLivro1.jpg"#IS texturaT
+						}
+					}
+				
+					geometry Box {size 0.2 11.75 7.75}
+				}
+
+				DEF	interiorT Transform	{
+					translation	0.2 0 0.25
+					children [
+						Shape {
+							appearance Appearance {material Material {ambientIntensity  0.8}}
+							geometry Box {size 0.4 11.75 7.75}
+						}
+					]
+				}
+
+			]
+		}
+
+
+	]
+}
+
+DEF timerGet TimeSensor {cycleInterval 1}
+DEF timerPut TimeSensor {cycleInterval 1}
+
+DEF pi PositionInterpolator {
+	key [ 0 1 ]
+	keyValue [-1.15 1 -10, -1.15 1 10]
+}
+
+DEF oi OrientationInterpolator {
+	key [0 1]
+	keyValue [0 1 0 0, 0 1 0 -1.57 ]
+}
+
+DEF si ScalarInterpolator {
+	key [0 1]
+	keyValue [0 1]
+}
+
+
+DEF pi1 PositionInterpolator {
+	key [ 0 1 ]
+	keyValue [-1.15 1 10, -1.15 1 -10]
+}
+
+DEF oi1 OrientationInterpolator {
+	key [0 1]
+	keyValue [0 1 0 -1.57, 0 1 0 0 ]
+}
+
+DEF si1 ScalarInterpolator {
+	key [0 1]
+	keyValue [0 1]
+}
+
+
+
+ROUTE back_sensor.touchTime TO timerGet.set_startTime
+ROUTE timerGet.fraction_changed TO si.set_fraction
+ROUTE si.value_changed TO pi.set_fraction
+ROUTE pi.value_changed TO Livro.set_translation
+ROUTE si.value_changed TO oi.set_fraction
+ROUTE oi.value_changed TO Livro.set_rotation
+
+ROUTE put_back.touchTime TO timerPut.set_startTime
+ROUTE timerPut.fraction_changed TO si1.set_fraction
+ROUTE si1.value_changed TO pi1.set_fraction
+ROUTE pi1.value_changed TO Livro.set_translation
+ROUTE si1.value_changed TO oi1.set_fraction
+ROUTE oi1.value_changed TO Livro.set_rotation

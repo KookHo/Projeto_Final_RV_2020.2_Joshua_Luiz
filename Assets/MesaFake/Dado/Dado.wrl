@@ -1,0 +1,72 @@
+#VRML V2.0 utf8
+
+DEF lado Shape{
+	appearance Appearance {material Material {ambientIntensity 0}
+		texture	ImageTexture {url "Lado1.jpg"}
+	}
+	geometry Box {size 1 1 0.01}
+}
+
+Transform {
+	translation	0.5 0 -0.5
+	rotation 0 1 0 3.14
+	children [
+		Shape{
+			appearance Appearance {material Material {ambientIntensity 0}
+				texture	ImageTexture {url "Lado2.jpg"}
+			}
+			geometry Box {size 0.01 1 1}
+		}
+	]
+}	 
+
+Transform {
+	translation	-0.5 0 -0.5
+	rotation 0 1 0 -1.57
+	children [
+		Shape{
+			appearance Appearance {material Material {ambientIntensity 0}
+				texture	ImageTexture {url "Lado3.jpg"}
+			}
+			geometry Box {size 1 1 0.01}
+		}
+	]
+}
+
+Transform {
+	translation	0 0 -1
+	children [
+		Shape{
+			appearance Appearance {material Material {ambientIntensity 0}
+				texture	ImageTexture {url "Lado4.jpg"}
+			}
+			geometry Box {size 1 1 0.01}
+		}
+	]
+}
+
+Transform {
+	translation	0 -0.5 -.5
+	rotation 1 0 0 -1.57
+	children [
+		Shape{
+			appearance Appearance {material Material {ambientIntensity 0}
+				texture	ImageTexture {url "Lado5.jpg"}
+			}
+			geometry Box {size 1 1 0.01}
+		}
+	]
+}
+
+Transform {
+	translation	0 0.5 -.5
+	rotation 1 0 0 -1.57
+	children [
+		Shape{
+			appearance Appearance {material Material {ambientIntensity 0}
+				texture	ImageTexture {url "Lado6.jpg"}
+			}
+			geometry Box {size 1 1 0.01}
+		}
+	]
+}

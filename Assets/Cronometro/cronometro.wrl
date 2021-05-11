@@ -1,0 +1,106 @@
+#VRML V2.0 utf8
+
+#botao disparar
+Transform {translation 0 0.22 0 children [
+	Shape {appearance Appearance {
+		material Material {
+			diffuseColor .61 .39 .07
+			specularColor .52 .24 0
+			emissiveColor .12 .07 .01
+			ambientIntensity .117
+			shininess .09
+		}
+		
+	}
+	geometry Box {size 0.5 0.1 0.15}}
+
+	
+	DEF Sensor TouchSensor {}
+
+]}
+
+DEF	tempo TimeSensor {cycleInterval 3}
+
+
+Transform {translation 0 0 0 children [
+	Shape {appearance Appearance {
+		material Material {
+			diffuseColor 0 0 0
+			specularColor .5 .5 .5
+			emissiveColor .15 .15 .15
+			ambientIntensity 0
+		}
+		
+		
+	}
+	geometry Box {size 2 0.5 0.25}}
+
+	DEF Tela Transform {translation 0 0 0.125 children [
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .54 0 0
+				specularColor .59 0 .13
+				ambientIntensity .0467
+				shininess .06
+				transparency 0.7
+			}
+			
+		}
+		geometry Box {size 1.8 0.4 0.01}}
+
+	 ]
+	}
+
+	Transform {translation -0.5 -0.15 0.126 scale 0.5 0.5 0.5 children [
+		Shape {appearance Appearance {
+			material Material {
+				diffuseColor .54 0 0
+				specularColor .59 0 .13
+				ambientIntensity .0467
+				shininess .06
+			}
+
+		}
+		geometry DEF Visor Text {string[ "00:00"]}}
+	]}
+
+
+]}
+
+
+DEF	Motor Script {
+
+	eventIn	SFFloat	AtivarCron
+
+	eventOut MFString Display
+	field SFInt32 valorDesejado 0
+
+
+	url	"javascript:
+	
+	 function AtivarCron(t){
+		var tempo = (t*3);
+		var visorStr = (Math.round(tempo*100)/100).toString();
+		if(visorStr >= 2.05){
+			Display[0] = '02:05';
+			valorDesejado=1;
+		}
+		if(valorDesejado==0){
+			if(visorStr[3]==undefined && visorStr[2]!=undefined)
+				Display[0] = '0' + visorStr[0] + ':' + visorStr[2] +'0';
+			else if(visorStr[3]==undefined && visorStr[2]==undefined){
+				Display[0] = '0' + visorStr[0] + ':' + '00';
+			}
+			else
+				Display[0] = '0' + visorStr[0] + ':' + visorStr[2] + visorStr[3];
+		}		 
+
+	 }
+
+	"
+
+}
+
+ROUTE Sensor.touchTime TO tempo.startTime
+ROUTE tempo.fraction_changed TO	Motor.AtivarCron
+ROUTE Motor.Display TO Visor.string

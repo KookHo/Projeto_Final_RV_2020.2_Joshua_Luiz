@@ -1,0 +1,129 @@
+#VRML V2.0 utf8
+
+Transform{
+	translation	0 0 -10
+	children [
+		Shape {
+			appearance Appearance {
+				material Material {
+					diffuseColor 0 0 0
+					specularColor .63 .92 1
+					ambientIntensity 0
+				}
+			}
+			geometry Box {size 5 5 0.25}
+
+		}
+	]
+}
+
+
+Transform{
+	translation	0 -6 0.25
+	children [
+		Shape {
+			appearance Appearance {
+				material Material {
+					diffuseColor 0 0 0
+					specularColor .63 .92 1
+					ambientIntensity 0
+					transparency .471
+				}
+			}
+
+			geometry Extrusion {
+				#ccw	FALSE
+
+				spine [#3D
+				 -1 7 -10
+				 0 8 -10
+				 0.5 8 -10
+				 0.5 4 -10
+				]
+
+				crossSection [#2D
+		    		0 0
+				   -0.6 0
+				   -0.6 .2
+					0 .2	
+					0 0 ]
+
+			}
+		}
+	]
+}
+
+
+
+DEF	Luz SpotLight {
+	location 0 0 0
+	direction 0 0 -1
+	on FALSE
+	radius 10
+	cutOffAngle	0.39
+
+}
+
+#botao
+Transform{
+	translation	0 5 -5
+	rotation 1 0 0 1.57
+	children [
+		Shape {
+			appearance Appearance {
+				material Material {
+					diffuseColor .52 .26 0
+					specularColor .97 .98 .12
+					ambientIntensity .00333
+					emissiveColor .24 0 0
+					shininess .12
+					transparency .3
+				}
+			}
+			geometry Box {size 0.5 0.3 0.25}
+		}
+		DEF	Liga TouchSensor {}
+
+		Transform {
+			translation	0 -0.08 0.1
+			children[
+				Shape {
+					appearance Appearance {material	Material {ambientIntensity 0.8}}
+					geometry Text {
+						string "P4"
+						fontStyle FontStyle {
+							justify "MIDDLE"
+							size 0.3
+						}
+					}
+				}
+			]
+		}
+	]
+}
+
+
+
+DEF Motor Script {
+	eventIn	SFBool liga
+
+	eventOut SFBool estado
+
+	field SFBool Ligado FALSE
+
+	url	"javascript:
+		function liga(b){
+			if (b == true && Ligado == false){
+				Ligado = true
+				estado = true
+			}else if (b == true && Ligado == true){
+				Ligado = false
+				estado = false
+			}
+	}
+
+	"
+}
+
+ROUTE Liga.isActive	TO Motor.liga
+ROUTE Motor.estado TO Luz.on

@@ -1,0 +1,61 @@
+#VRML V2.0 utf8
+
+NavigationInfo {headlight FALSE	type "WALK"}
+Viewpoint {position	0 0 2}
+
+Transform{translation 0 0 -1.5 children[Inline {url["Estante.wrl"]}]}
+
+#estante de cima
+Transform{translation -0.08 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -0.16 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.56 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.64 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.72 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.8  0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.88 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0    0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  1.2  0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  1.12 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  1.28 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+
+Transform{translation  0.56 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -0.16 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -0.24 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation  0.48 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -0.32 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation  1.44 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+
+Transform{translation 0.08 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation 0.16 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation 0.24 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation  0   0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation 0.88 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation 0.96 0.33 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+
+
+#estante de baixo
+Transform{translation -0.6  -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -1.4  -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -1.32 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation .36   -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -0.28 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -0.2  -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -0.12 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -1    -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.2  -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation  0.12 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+Transform{translation -0.76 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro.wrl"]}]}
+
+Transform{translation -1.08 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -1.16 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -0.36 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation    -1 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation -0.44 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+Transform{translation  0.12 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro1.wrl"]}]}
+
+Transform{translation -0.92 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation  0.2  -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation -0.76 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation  -1   -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation -0.12 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["Livro2.wrl"]}]}
+Transform{translation -0.44 -.68 0 scale 0.07 0.07 0.07 children[Inline {url["LivroDica.wrl"]}]}

@@ -1,0 +1,380 @@
+#VRML V2.0 utf8
+
+NavigationInfo {
+	type "WALK"
+	headlight FALSE
+}
+
+Viewpoint {
+	position 23 0 80
+	orientation	0 1 0 3.14
+}
+
+DEF	LuzTeto1 PointLight {
+	on FALSE
+	location 30 7 15
+	
+	radius 55
+}
+
+DEF	LuzTeto2 PointLight {
+	on FALSE
+	location 0 10 72.5
+	
+	radius 56
+}
+
+#tutorial
+Group {
+	children [
+		Transform{
+			translation 25 5 99.5
+			rotation 0 1 0 3.14
+			children [
+				DEF Tutorial Shape{
+					appearance Appearance{}
+					geometry Text {
+						fontStyle FontStyle {justify "MIDDLE" size 1.5}
+						string ["Welcome to Ventanitas' Room!", "You must enter the correct code to exit.",
+				    		"Movimentation: Arrow Keys/Mouse.", "You can use     to move forward/backward;",
+							"  will allow you to walk sideway;", "  allows you to look around.", "Good Luck!"]
+					}
+
+				}
+			]
+		}
+
+		#b1
+		Transform {
+			translation	29.6 0.85 99.85
+			children [
+				Shape {
+					appearance Appearance {
+						texture	ImageTexture {
+							url	"Assets/imgs/b1.png"
+						}
+					}
+					geometry Box {size 0.8 0.8 0.23}
+				}
+			]
+		}
+
+		#b2
+		Transform {
+			translation	34 -0.65 99.85
+			children [
+				Shape {
+					appearance Appearance {
+						texture	ImageTexture {
+							url	"Assets/imgs/b2.png"
+						}
+					}
+					geometry Box {size 0.8 0.8 0.23}
+				}
+			]
+		}
+
+		#b3
+		Transform {
+			translation	32.7 -2.25 99.85
+			children [
+				Shape {
+					appearance Appearance {
+						texture	ImageTexture {
+							url	"Assets/imgs/b3.png"
+						}
+					}
+					geometry Box {size 0.8 0.8 0.23}
+				}
+			]
+		}
+	]
+}
+
+
+Group {
+	children [
+
+	NavigationInfo {headlight FALSE}
+	
+	#paredes Laterais
+	Transform{
+		translation	40 10 50
+		children [
+			DEF ParedeF Shape {
+				appearance Appearance { 
+					material Material {
+						diffuseColor .5 .3 .19
+						ambientIntensity .0833
+						specularColor .08 .08 .05
+						emissiveColor .12 .13 .08
+						shininess .17
+					}
+				}
+				geometry Box{size 0.5 30 100}
+			}
+		]
+	}
+
+	Transform{
+		translation	-40 10 50
+		children [
+			USE	ParedeF
+		]
+	}
+	
+	
+	#parede de tras
+	Transform {
+		translation	0 10 0
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material{
+						diffuseColor .5 .3 .19
+						ambientIntensity .0833
+						specularColor .08 .08 .05
+						emissiveColor .12 .13 .08
+						shininess .17
+					}
+				}
+				geometry Box{size 80 30 0.5}
+			}
+		]
+	}
+
+
+	#paredes da porta
+	Transform {
+		translation	-19.5 10 100
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material{
+						diffuseColor .5 .3 .19
+						ambientIntensity .0833
+						specularColor .08 .08 .05
+						emissiveColor .12 .13 .08
+						shininess .17
+					}
+				}
+				geometry Box{size 42 30 0.5}
+			}
+		]
+	}
+
+	Transform {
+		translation	23 10 100
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material{
+						diffuseColor .5 .3 .19
+						ambientIntensity .0833
+						specularColor .08 .08 .05
+						emissiveColor .12 .13 .08
+						shininess .17
+					}
+				}
+				geometry Box{size 35 30 0.5}
+			}
+		]
+	}
+
+	Transform {
+		translation	0 15 100
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material{
+						diffuseColor .5 .3 .19
+						ambientIntensity .0833
+						specularColor .08 .08 .05
+						emissiveColor .12 .13 .08
+						shininess .17
+					}
+				}
+				geometry Box{size 35 24 0.499}
+			}
+		]
+	}
+
+
+	#chao
+	Transform {
+		translation 0 -5 50
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material {
+						ambientIntensity 0
+					}
+					texture	ImageTexture {
+						repeatS	TRUE
+						repeatT	TRUE
+						url	"Assets/imgs/piso.jpg"
+					}
+					textureTransform TextureTransform {
+						scale 50 50
+					}
+				}
+				geometry Box{size 80 0.5 100}
+			}
+		]
+	}
+
+	#teto
+	Transform {
+		translation 0 25 50
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material {
+						ambientIntensity 0
+					}
+					texture	ImageTexture {
+						repeatS	TRUE
+						repeatT	TRUE
+						url	"Assets/imgs/teto.jpg"
+					}
+					textureTransform TextureTransform {
+						scale 1 1
+					}
+				}
+				geometry Box{size 80 0.5 100}
+			}
+		]
+	}
+
+
+	#limite da camera
+	Transform {
+		translation 0 -2 50
+		children [
+			Shape {
+				appearance Appearance { 
+					material Material {
+						diffuseColor .36 .36 .36
+						ambientIntensity 0
+						specularColor .94 .94 .94
+						emissiveColor 0 .36 .27
+						shininess .23
+						transparency 1
+					}
+				}
+				geometry Box{size 80 0.1 100}
+			}
+		]
+	}
+
+
+	]
+}
+  
+
+#botões de Luz
+Group {
+	children [
+		Transform{
+			translation	5 0 0.15
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							diffuseColor 0 0 0
+							specularColor 1 1 1
+							ambientIntensity 0
+							emissiveColor 1 .68 .18
+							shininess .05
+						}
+					}
+					geometry Box {size 0.5 0.2 0.25}
+				}
+				DEF	LigaLuzTeto1 TouchSensor {}
+			]
+		}
+
+		Transform{
+			translation	5 -0.3 0.15
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							diffuseColor 0 0 0
+							specularColor 1 1 1
+							ambientIntensity 0
+							emissiveColor 1 .68 .18
+							shininess .05
+						}
+					}
+					geometry Box {size 0.5 0.2 0.25}
+				}
+				DEF	LigaLuzTeto2 TouchSensor {}
+			]
+		}
+	]
+}
+
+
+Transform{translation 0 0.5 4.5 scale 2 2 2 children[Inline {url["Assets/Estante/EstanteLivros.wrl"]}]}
+Transform{translation 0 0 0 children[Inline {url["Assets/Abajur.wrl"]}]}
+Transform{translation -38 -4.75 75 children[Inline {url["Assets/Tapetes/TapeteR2.wrl"]}]}
+Transform{translation 0 -4.75 50  scale 10 1 10 children[Inline {url["Assets/Tapetes/TapeteR1.wrl"]}]}
+Transform{translation 0 -4.75 2 scale 3 1 2 children[Inline {url["Assets/Tapetes/TapeteQ1.wrl"]}]}
+Transform{translation 37 -4.75 15 scale 4 1 9 children[Inline {url["Assets/Tapetes/TapeteQ2.wrl"]}]}
+Transform{translation -39 -2.2 50.5 rotation 0 1 0 2.36 scale 0.1 0.1 0.1 children[Inline {url["Assets/MesaFake/Dado/Dado.wrl"]}]}
+Transform{translation -39 -2.2 50 scale 0.1 0.1 0.1 children[Inline {url["Assets/MesaFake/Dado/Dado.wrl"]}]}
+Transform{translation -38.5 -2.19 75.25 scale 0.1 0.1 0.1 children[Inline {url["Assets/MesaFake/Dado/Dado.wrl"]}]}
+Transform{translation 37.6 -2.75 10 rotation 0 1 0 -1.57  children[Inline {url"Assets/Mesa/mesa.wrl"}]}
+Transform{translation 37.6 -2.75 15 rotation 0 1 0 -1.57 children[Inline {url["Assets/MesaFake/MesaFake.wrl"]}]}
+Transform{translation 37.6 -2.75 20 rotation 0 1 0 -1.57 children[Inline {url["Assets/MesaFake/MesaFakeComDado.wrl"]}]}
+
+Transform{translation 20 7 0.45 scale 4 4 4  children[Inline {url["Assets/Quadros/Quadro1.wrl"]}]}
+Transform{translation -39 7 40 scale 4 4 4 rotation 0 1 0 1.57 children[Inline {url["Assets/Quadros/Quadro2.wrl"]}]}
+Transform{translation -25 7 99.8 scale 4 4 4 rotation 0 1 0 3.14 children[Inline {url["Assets/Quadros/Quadro3.wrl"]}]}
+Transform{translation 39.7 7 60 scale 4 4 4 rotation 0 1 0 -1.57 children[Inline {url["Assets/Quadros/Quadro4.wrl"]}]}
+Transform{translation -39 7 65 scale 4 4 4 rotation 0 1 0 1.57 children[Inline {url["Assets/Quadros/Quadro5.wrl"]}]}
+
+Transform{translation -38 -2.3 75 rotation 0 1 0 1.57 scale 0.5 0.8 0.5 children[Inline {url["Assets/Cronometro/CronometroEBanquinho.wrl"]}]}
+Transform{translation -37 -0.3 50 rotation 0 1 0 1.57 scale 1.3 1.3 1.3 children[Inline {url["Assets/Armario/Armario.wrl"]}]}
+Transform{translation -0.5 -1 99.8 rotation 0 1 0 3.14 scale 2 2 2 children[Inline {url["Assets/Porta.wrl"]}]}
+Transform{translation -37 5.25 5.2 rotation 1 0 0 -1.57 scale 1 1 1 children[Inline {url["Assets/PistaLuz.wrl"]}]}
+
+DEF Motor Script {
+	eventIn	SFBool LigaLuz1
+	eventIn	SFBool LigaLuz2
+
+	eventOut SFBool estadoLuz1
+	eventOut SFBool estadoLuz2
+
+	field SFBool Ligado1 FALSE
+	field SFBool Ligado2 FALSE
+
+	url	"javascript:
+		function LigaLuz1(b){
+			if (b == true && Ligado1 == false){
+				Ligado1 = true
+				estadoLuz1 = true
+			}else if (b == true && Ligado1 == true){
+				Ligado1 = false
+				estadoLuz1 = false
+			}
+		}
+
+		function LigaLuz2(b){
+			if (b == true && Ligado2 == false){
+				Ligado2 = true
+				estadoLuz2 = true
+			}else if (b == true && Ligado2 == true){
+				Ligado2 = false
+				estadoLuz2 = false
+			}
+		}
+
+	"
+}
+
+ROUTE LigaLuzTeto1.isActive	TO Motor.LigaLuz1
+ROUTE LigaLuzTeto2.isActive	TO Motor.LigaLuz2
+ROUTE Motor.estadoLuz1 TO LuzTeto1.on
+ROUTE Motor.estadoLuz2 TO LuzTeto2.on
